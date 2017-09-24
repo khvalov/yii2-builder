@@ -380,9 +380,18 @@ class Form extends BaseForm
                     Html::hiddenInput("{$this->formName}[{$attribute}]", $val, $options);
                 $settings['options'] = ArrayHelper::getValue($settings, 'hiddenStaticOptions', []);
             }
-            $out = $this->hasModel() ?
-                static::renderActiveInput($this->form, $this->model, $attribute, $settings) :
-                static::renderInput("{$this->formName}[{$attribute}]", $settings);
+
+            if($this->hasModel()){
+                $out=static::renderActiveInput($this->form, $this->model, $attribute, $settings);
+            } else {
+                //Check whether atrtribute defined in array way ([])
+                if(substr($attribute,0,1)=='[' && substr($attribute,-1)==']') {
+                    $out=static::renderInput("{$this->formName}{$attribute}", $settings);
+                } else {
+                    $out=static::renderInput("{$this->formName}[{$attribute}]", $settings);
+                }
+            }
+
             return $out . $hidden;
         }
     }
