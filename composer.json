@@ -1,5 +1,5 @@
 {
-    "name": "kartik-v/yii2-builder",
+    "name": "khvalov/yii2-builder",
     "description": "Build forms (single-row or multi-row/tabular) easily for Yii Framework 2.0",
     "keywords": ["yii2", "extension", "widget", "form", "builder"],
     "homepage": "https://github.com/kartik-v/yii2-builder",
